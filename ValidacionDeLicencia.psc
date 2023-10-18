@@ -26,7 +26,7 @@ Algoritmo ValidacionDeLicencia
 			Escribir mensaje
 			Leer ApPatValidacion
 			Si No EsNombreValido(ApPatValidacion) Entonces
-				Escribir "El Apellido Materno debe comenzar con mayúscula y contener solo minúsculas. Inténtalo de nuevo."
+				Escribir "El Apellido Paterno debe comenzar con mayúscula y contener solo minúsculas. Inténtalo de nuevo."
 			Fin Si
 		Fin Mientras
 	Fin Funcion
