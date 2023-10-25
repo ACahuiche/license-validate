@@ -19,24 +19,41 @@ Fin Funcion
 SubProceso ModuloPuedoTenerLicencia
 	Escribir "Puedo tener licencia?"
 	Escribir "  "
-	Escribir "Ingresa tu año de nacimiento"
-	Escribir "con el siguiente formato "
-	Escribir "AAAA"
-	Leer FechaNa
-	aniocurso<-SubCadena(ConvertirATexto(FechaActual()),1,4)
-	eda<-ConvertirANumero(aniocurso)- FechaNa
-	lice(eda)
+	Repetir
+		Escribir "Ingresa tu año de nacimiento"
+		Escribir "con el siguiente formato "
+		Escribir "AAAA"
+		Leer FechaNa
+		Si Longitud(ConvertirATexto(FechaNa)) <> 4 Entonces
+			Escribir "Debes introducir el año de nacimiento a cuatro digitos"
+		SiNo
+			aniocurso<-SubCadena(ConvertirATexto(FechaActual()),1,4)
+			eda<-ConvertirANumero(aniocurso)- FechaNa
+			lice(eda)
+		Fin Si
+	Hasta Que Longitud(ConvertirATexto(FechaNa)) = 4
+	
+	
+	
 FinSubProceso
 
 SubProceso ModuloValidarAplicaRenovacion
 	Escribir "Es tiempo de renovar mi licencia?"
-	Escribir 'Escribe año de vencimiento de licencia'
-	Leer venci
-	Si ValidarFechaDeExpiracion(venci) Entonces
-		Escribir 'Debes renovar tu licencia'
-	SiNo
-		Escribir 'No es tiempo de renovar'
-	FinSi
+	Repetir
+		Escribir 'Escribe año de vencimiento de licencia'
+		Leer venci
+		Si Longitud(ConvertirATexto(venci)) <> 4 Entonces
+			Escribir "Debes introducir el año de vencimiento a cuatro digitos"
+		SiNo
+			Si ValidarFechaDeExpiracion(venci) Entonces
+				Escribir 'Debes renovar tu licencia'
+			SiNo
+				Escribir 'No es tiempo de renovar'
+			FinSi
+		Fin Si
+	Hasta Que Longitud(ConvertirATexto(venci)) == 4
+	
+	
 FinSubProceso
 
 Funcion EsExpirada <- ValidarFechaDeExpiracion(venci)
@@ -141,8 +158,9 @@ Algoritmo RenovaLi2
 		3:
 			//"3. Generar clave de pago"
 			ModuloGenerarClavePago(APaterno, clave, venc)
+		De Otro Modo:
+			Escribir "Opcion invalida"
 	Fin Segun
-	
 		Escribir "Deseas regresar al menu?"
 		Escribir "[1] Si"
 		Escribir "[2] No"
