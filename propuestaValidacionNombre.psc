@@ -51,9 +51,8 @@ FinSubProceso
 
 
 Algoritmo ejercicio
-	Definir nombre, ApellidoPat, ApellidoMat Como Caracter
+	Definir nombre, ApellidoPat, ApellidoMat, diaExpiracionText, mesExpiracionText, anioExpiracionText Como Caracter
 	Definir fecha, diaExpiracion, mesExpiracion, anioExpiracion Como Entero
-	Definir opc Como Logico
 	Escribir "Bienvenido"
 	Repetir
 		nombre <- PedirNombre
@@ -83,12 +82,35 @@ Algoritmo ejercicio
 	Hasta Que ValidaNombre(ApellidoMat) = Verdadero
 	
 	Escribir "Fecha de expiracion"
-	Escribir "Introduce el dia de expiracion de tu licencia"
-	Leer diaExpiracion
-	Escribir "Introduce el mes de expiracion de tu licencia"
-	Leer mesExpiracion
-	Escribir "Introduce el dia de expiracion de tu licencia"
-	Leer anioExpiracion
+	Repetir
+		Escribir "Introduce el dia de expiracion de tu licencia (a dos digitos)"
+		Leer diaExpiracionText
+		Si Longitud(diaExpiracionText) <> 2 Entonces
+			Escribir "Debes introducir el dia de expiracion a dos digitos"
+		SiNo
+			diaExpiracion <- ConvertirANumero(diaExpiracionText)
+		Fin Si
+	Hasta Que Longitud(diaExpiracionText) = 2
+	
+	Repetir
+		Escribir "Introduce el mes de expiracion de tu licencia (a dos digitos)"
+		Leer mesExpiracionText
+		Si Longitud(mesExpiracionText) <> 2 Entonces
+			Escribir "Debes introducir el mes de expiracion a dos digitos"
+		SiNo
+			mesExpiracion <- ConvertirANumero(mesExpiracionText)
+		Fin Si
+	Hasta Que Longitud(mesExpiracionText) = 2
+	
+	Repetir
+		Escribir "Introduce el Año de expiracion de tu licencia (a cuatro digitos)"
+		Leer anioExpiracionText
+		Si Longitud(anioExpiracionText) <> 4 Entonces
+			Escribir "Debes introducir el año de expiracion a cuatro digitos"
+		SiNo
+			anioExpiracion <- ConvertirANumero(anioExpiracionText)
+		Fin Si
+	Hasta Que Longitud(anioExpiracionText) = 4
 	
 	Si ValidarFechaDeExpiracion(diaExpiracion, mesExpiracion, anioExpiracion) = Verdadero Entonces
 		Escribir "La licencia todavia es valida"
