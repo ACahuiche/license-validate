@@ -32,9 +32,6 @@ SubProceso ModuloPuedoTenerLicencia
 			lice(eda)
 		Fin Si
 	Hasta Que Longitud(ConvertirATexto(FechaNa)) = 4
-	
-	
-	
 FinSubProceso
 
 SubProceso ModuloValidarAplicaRenovacion
@@ -52,8 +49,6 @@ SubProceso ModuloValidarAplicaRenovacion
 			FinSi
 		Fin Si
 	Hasta Que Longitud(ConvertirATexto(venci)) == 4
-	
-	
 FinSubProceso
 
 Funcion EsExpirada <- ValidarFechaDeExpiracion(venci)
@@ -103,8 +98,6 @@ Fin Funcion
 // función para validar fecha de expiración
 // menú para  verificar licencia, fecha de vencimiento, línea de pago
 	
-
-
 Algoritmo RenovaLi2
 	clave<-'G101'
 	Inicio<-'L'
